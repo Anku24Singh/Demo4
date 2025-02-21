@@ -1,0 +1,226 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOGO Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+        .container {
+            width: 380px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .option {
+            border: 2px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+        }
+        .option.active {
+            border-color: #ff4081;
+            background: #ffe4ec;
+        }
+        .discount {
+            background: #ff4081;
+            color: white;
+            padding: 3px 8px;
+            font-size: 12px;
+            border-radius: 5px;
+            margin-left: 20px;
+        }
+        .most-popular {
+            background: #ff4081;
+            color: white;
+            padding: 3px 8px;
+            font-size: 12px;
+            border-radius: 5px;
+            position: absolute;
+            top: -10px;
+            right: 10px;
+        }
+        .details {
+            display: none;
+            margin-top: 10px;
+        }
+        .option.active .details {
+            display: block;
+        }
+        .price-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: grey;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+        .selection-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 1px;
+        }
+        .selection-box {
+            flex: 1 1 48%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+        select {
+            width: 40%;
+            padding: 5px;
+            font-size: 12px;
+        }
+    
+        .add-to-cart {
+            background: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .con{
+            display: flex;
+            justify-content: space-between;
+        }
+        .left{
+            color:#ff4081;
+        }
+        h2{
+            text-align: center;
+            color:#ff4081;
+        }
+        .it{
+            text-align: right;
+            color: gray;
+            text-align: end;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>YAY! It’s BOGO</h2>
+        
+        <div class="option" onclick="toggleOption(this)">
+            <input type="radio" name="unit" value="1"> 1 Unit <span class="discount">10% Off</span>
+            <div class="details">
+                <p class="price">$10.00 USD <span class="old-price">$24.00 USD</span></p>
+                <div class="selection-container">
+                    <div class="selection-box">
+                        <label>Size:</label>
+                        <select><option>S</option><option>M</option></select>
+                        <select><option>S</option><option>M</option></select>
+                    </div>
+                    <div class="selection-box">
+                        <label>Color:</label>
+                        <select><option>Black</option><option>White</option></select>
+                        <select><option>Black</option><option>White</option></select>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="option" onclick="toggleOption(this)">
+            <span class="most-popular">Most Popular</span>
+            <div class="price-container">
+                <div>
+                    <input type="radio" name="unit" value="2"> 2 Units <span class="discount">20% Off</span>
+                </div>
+                <p class="price">$18.00 USD </p><br><span class="old-price">$24.00 USD</span>
+            </div>
+            <div class="details" id="selection-details">
+                <div class="selection-container">
+                    <div class="selection-box">
+                        <label>Size:</label>
+                        <select><option>S</option><option>M</option></select>
+                        <select><option>S</option><option>M</option></select>
+                    </div>
+                    <div class="selection-box">
+                        <label>Color:</label>
+                        <select><option>Black</option><option>White</option></select>
+                        <select><option>Black</option><option>White</option></select>
+                    </div>
+                </div>
+                <div class="selection-container">
+                    <!-- <div class="selection-box">
+                        <button class="remove-btn" onclick="removeSelection(event, this)">Remove</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="option" onclick="toggleOption(this)">
+            <input type="radio" name="unit" value="3"> 3 Units <span class="discount">30% Off</span>
+            <div class="details">
+                <p class="price">$24.00 USD <span class="old-price">$24.00 USD</span></p>
+                <div class="selection-container">
+                    <div class="selection-box">
+                        <label>Size:</label>
+                        <select><option>S</option><option>M</option></select>
+                        <select><option>S</option><option>M</option></select>
+                    </div>
+                    <div class="selection-box">
+                        <label>Color:</label>
+                        <select><option>Black</option><option>White</option></select>
+                        <select><option>Black</option><option>White</option></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="con">
+            <div class="left">
+                <p>Free Delivery</p>
+            </div>
+            <div class="right">
+                    <p>Total:<b>DKK 360.00</b></p>
+                </div>
+            </div>
+            <button class="add-to-cart">+ Add to Cart</button>
+            <i class="it">Powered by Pumper</i>
+        </div>
+
+        <script>
+            function toggleOption(selectedOption) {
+                document.querySelectorAll('.option').forEach(option => {
+                    if (option === selectedOption) {
+                        option.classList.add('active');
+                    } else {
+                        option.classList.remove('active');
+                    }
+                });
+            }
+            
+            function removeSelection(event, button) {
+                event.stopPropagation(); // Prevent triggering parent div click
+                button.parentElement.remove();
+            }
+        </script>
+    </body>
+    </html>
